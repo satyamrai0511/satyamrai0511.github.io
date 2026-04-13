@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satyam Rai | Data Scientist & AI Engineer</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     
     <script>
@@ -46,13 +43,11 @@
             color: #f8fafc;
             overflow-x: hidden;
         }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #0a0f1c; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
 
-        /* Typography Gradients */
         .gradient-text {
             background: linear-gradient(135deg, #3b82f6, #8b5cf6, #14b8a6);
             -webkit-background-clip: text;
@@ -66,7 +61,6 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Glassmorphism */
         .glass {
             background: rgba(17, 24, 39, 0.6);
             backdrop-filter: blur(12px);
@@ -80,7 +74,6 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Scroll Animations */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -91,7 +84,6 @@
             transform: translateY(0);
         }
 
-        /* Timeline enhancements */
         .timeline-dot {
             width: 20px;
             height: 20px;
@@ -108,20 +100,17 @@
             position: relative;
         }
 
-        /* Ambient Glows */
         .glow-orb-1 { position: absolute; top: -10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; z-index: -1; }
         .glow-orb-2 { position: absolute; bottom: -10%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; z-index: -1; }
     </style>
 </head>
 <body class="antialiased selection:bg-primary/30 selection:text-white">
 
-    <!-- Ambient Backgrounds -->
     <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
         <div class="glow-orb-1 animate-pulse-slow"></div>
         <div class="glow-orb-2 animate-pulse-slow" style="animation-delay: 2s;"></div>
     </div>
 
-    <!-- Navbar -->
     <nav class="fixed w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -137,12 +126,12 @@
                         <a href="#experience" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Experience</a>
                         <a href="#projects" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Projects</a>
                         <a href="#contact" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Contact</a>
-                        <a href="#" class="border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-md text-sm font-medium transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                        
+                        <a href="Satyam_Rai.pdf" target="_blank" class="border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-md text-sm font-medium transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
                             Resume
                         </a>
                     </div>
                 </div>
-                <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
                         <i class="fas fa-bars text-2xl"></i>
@@ -150,24 +139,22 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden glass border-b border-gray-800 absolute w-full">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#about" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">About</a>
                 <a href="#experience" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Experience</a>
                 <a href="#projects" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Projects</a>
                 <a href="#contact" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Contact</a>
-                <a href="#" class="block text-center mt-4 bg-primary hover:bg-blue-600 px-3 py-3 rounded-md text-base font-medium transition">Resume</a>
+                
+                <a href="Satyam_Rai.pdf" target="_blank" class="block text-center mt-4 bg-primary hover:bg-blue-600 px-3 py-3 rounded-md text-base font-medium transition">Resume</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center relative pt-20 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 
-                <!-- Left: Text Content -->
                 <div class="z-10 text-left reveal">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-primary/30 text-primary text-sm font-mono mb-6">
                         <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
@@ -192,22 +179,16 @@
                     </div>
                 </div>
 
-                <!-- Right: Abstract Graphic / Terminal -->
                 <div class="hidden lg:block z-10 reveal" style="transition-delay: 200ms;">
                     <div class="relative w-full max-w-lg mx-auto animate-float">
-                        <!-- Decorative background element -->
                         <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent blur-2xl opacity-20 rounded-full"></div>
-                        
-                        <!-- Terminal Window Mockup -->
                         <div class="glass-card rounded-xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
-                            <!-- Terminal Header -->
                             <div class="bg-black/40 px-4 py-3 border-b border-white/5 flex items-center gap-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
                                 <span class="ml-2 text-xs font-mono text-gray-500">satyam@gpu-cluster: ~</span>
                             </div>
-                            <!-- Terminal Body -->
                             <div class="p-6 font-mono text-sm leading-relaxed text-gray-300">
                                 <p class="text-green-400 mb-2">➜  ~ ./compile_jit_kernel.sh</p>
                                 <p class="text-blue-300 mb-1">Invoking CUDA C++ compiler...</p>
@@ -225,7 +206,6 @@
         </div>
     </section>
 
-    <!-- About & Education Section -->
     <section id="about" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-4 mb-16 reveal">
@@ -235,7 +215,6 @@
             </div>
             
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
-                <!-- Text Area -->
                 <div class="lg:col-span-7 space-y-6 text-gray-400 text-lg leading-relaxed reveal">
                     <p>
                         Hello! I'm Satyam, a Data Scientist with over 3 years of experience specializing in building and optimizing data pipelines, predictive models, and deep learning inference systems for high-volume datasets. 
@@ -248,7 +227,6 @@
                     </p>
                 </div>
                 
-                <!-- Education & Quick Facts -->
                 <div class="lg:col-span-5 reveal" style="transition-delay: 200ms;">
                     <div class="glass-card p-8 rounded-2xl">
                         <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
@@ -256,7 +234,6 @@
                         </h3>
                         
                         <div class="space-y-6">
-                            <!-- Degree 1 -->
                             <div class="relative pl-4 border-l-2 border-primary/30">
                                 <div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1.5"></div>
                                 <h4 class="text-white font-medium">Master of Science, Data Science</h4>
@@ -264,7 +241,6 @@
                                 <p class="text-gray-500 text-xs font-mono">Aug 2024 - Dec 2025 | GPA: 3.7</p>
                             </div>
                             
-                            <!-- Degree 2 -->
                             <div class="relative pl-4 border-l-2 border-primary/30">
                                 <div class="absolute w-3 h-3 bg-gray-600 rounded-full -left-[7px] top-1.5 border border-dark"></div>
                                 <h4 class="text-white font-medium">Bachelor of Tech, Computer Science</h4>
@@ -290,7 +266,6 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
     <section id="experience" class="py-24 relative bg-card/20">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-4 mb-16 reveal">
@@ -300,7 +275,6 @@
             </div>
             
             <div class="pl-4 sm:pl-8 timeline-border space-y-16">
-                <!-- Job 1 -->
                 <div class="relative pl-8 sm:pl-12 reveal">
                     <div class="timeline-dot"></div>
                     <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
@@ -325,7 +299,6 @@
                     </div>
                 </div>
 
-                <!-- Job 2 -->
                 <div class="relative pl-8 sm:pl-12 reveal">
                     <div class="timeline-dot" style="background: #4b5563;"></div>
                     <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
@@ -350,7 +323,6 @@
                     </div>
                 </div>
 
-                <!-- Job 3 -->
                 <div class="relative pl-8 sm:pl-12 reveal">
                     <div class="timeline-dot" style="background: #4b5563;"></div>
                     <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
@@ -375,7 +347,6 @@
                     </div>
                 </div>
 
-                <!-- Job 4 -->
                 <div class="relative pl-8 sm:pl-12 reveal">
                     <div class="timeline-dot" style="background: #4b5563;"></div>
                     <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
@@ -403,7 +374,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-4 mb-16 reveal">
@@ -414,16 +384,13 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
-                <!-- Project 1 -->
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300">
-                    <!-- Image Placeholder / Graphic -->
                     <div class="h-48 relative overflow-hidden bg-gradient-to-br from-blue-900/40 to-purple-900/40 border-b border-white/5">
                         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <i class="fas fa-photo-video text-5xl text-white/20 group-hover:text-primary transition duration-500 group-hover:scale-110"></i>
                         </div>
                     </div>
-                    <!-- Content -->
                     <div class="p-8 flex flex-col flex-grow">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Multimodal Video Captioning</h3>
@@ -442,7 +409,6 @@
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300" style="transition-delay: 100ms;">
                     <div class="h-48 relative overflow-hidden bg-gradient-to-br from-teal-900/40 to-blue-900/40 border-b border-white/5">
                         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
@@ -468,7 +434,6 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
                 <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300" style="transition-delay: 200ms;">
                     <div class="h-48 relative overflow-hidden bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-b border-white/5">
                         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
@@ -504,7 +469,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 reveal">
@@ -516,26 +480,27 @@
             </div>
             
             <div class="glass-card p-8 md:p-12 rounded-2xl reveal border border-white/10 shadow-2xl">
-                <form class="space-y-6">
+                <form id="contact-form" class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                            <input type="text" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="John Doe">
+                            <input type="text" id="name" required class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="John Doe">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                            <input type="email" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="john@example.com">
+                            <input type="email" id="email" required class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="john@example.com">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
-                        <input type="text" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Opportunity / Networking">
+                        <input type="text" id="subject" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Opportunity / Networking">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                        <textarea rows="5" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none" placeholder="Hello Satyam..."></textarea>
+                        <textarea id="message" rows="5" required class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none" placeholder="Hello Satyam..."></textarea>
                     </div>
-                    <button type="button" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                    
+                    <button type="submit" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
                         Send Message <i class="fas fa-paper-plane ml-2"></i>
                     </button>
                 </form>
@@ -543,7 +508,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-8 border-t border-white/5 relative z-10 text-center">
         <div class="flex justify-center space-x-8 mb-6">
             <a href="mailto:satyamrai@outlook.com" class="text-gray-500 hover:text-white hover:-translate-y-1 transition-all text-2xl p-2">
@@ -561,7 +525,6 @@
         </p>
     </footer>
 
-    <!-- Scripts -->
     <script>
         // Mobile menu toggle
         document.getElementById('mobile-menu-btn').addEventListener('click', function() {
@@ -581,6 +544,24 @@
             }
         });
 
+        // FIXED: Form Submission Handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents page reload
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value || 'Portfolio Contact Inquiry';
+            const message = document.getElementById('message').value;
+
+            // Construct the email body
+            const emailBody = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+
+            // Create the mailto link and open it
+            const mailtoLink = `mailto:satyamrai@outlook.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            window.location.href = mailtoLink;
+        });
+
         // Intersection Observer for scroll animations
         document.addEventListener('DOMContentLoaded', function() {
             const observerOptions = {
@@ -593,7 +574,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Run once
+                        observer.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
@@ -602,7 +583,6 @@
                 observer.observe(el);
             });
             
-            // Trigger animation for elements already in view on load
             setTimeout(() => {
                 document.querySelectorAll('.reveal').forEach((el) => {
                     const rect = el.getBoundingClientRect();
