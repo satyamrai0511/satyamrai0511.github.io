@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyam Rai | Data Scientist & AI Engineer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        dark: '#0a0f1c',
+                        card: '#111827',
+                        primary: '#3b82f6',
+                        accent: '#8b5cf6',
+                        teal: '#14b8a6'
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0f1c;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0f1c; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3b82f6; }
+
+        /* Typography Gradients */
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 5s ease infinite;
+        }
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30,41,59,0.4) 0%, rgba(15,23,42,0.4) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline enhancements */
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: 4px solid #0a0f1c;
+            position: absolute;
+            left: -10.5px;
+            top: 24px;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .timeline-border {
+            border-left: 2px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+        }
+
+        /* Ambient Glows */
+        .glow-orb-1 { position: absolute; top: -10%; left: -10%; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; z-index: -1; }
+        .glow-orb-2 { position: absolute; bottom: -10%; right: -10%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, rgba(0,0,0,0) 70%); border-radius: 50%; z-index: -1; }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary/30 selection:text-white">
+
+    <!-- Ambient Backgrounds -->
+    <div class="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+        <div class="glow-orb-1 animate-pulse-slow"></div>
+        <div class="glow-orb-2 animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 font-bold text-2xl tracking-wider">
+                    <a href="#home" class="hover:opacity-80 transition flex items-center gap-2">
+                        <i class="fas fa-layer-group text-primary"></i>
+                        <span>SR<span class="text-primary">.</span></span>
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#about" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">About</a>
+                        <a href="#experience" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Experience</a>
+                        <a href="#projects" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Projects</a>
+                        <a href="#contact" class="text-gray-300 hover:text-primary transition text-sm font-medium tracking-wide">Contact</a>
+                        <a href="#" class="border border-primary text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-md text-sm font-medium transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                            Resume
+                        </a>
+                    </div>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-b border-gray-800 absolute w-full">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">About</a>
+                <a href="#experience" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Experience</a>
+                <a href="#projects" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Projects</a>
+                <a href="#contact" class="block hover:bg-white/5 px-3 py-3 rounded-md text-base font-medium transition">Contact</a>
+                <a href="#" class="block text-center mt-4 bg-primary hover:bg-blue-600 px-3 py-3 rounded-md text-base font-medium transition">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center relative pt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left: Text Content -->
+                <div class="z-10 text-left reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass border border-primary/30 text-primary text-sm font-mono mb-6">
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                        Available for new opportunities
+                    </div>
+                    <h1 class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 text-white leading-tight">
+                        Hi, I'm <br/><span class="gradient-text">Satyam Rai.</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-4xl font-semibold text-gray-400 mb-6 leading-snug">
+                        Data Scientist & <br> AI Automation Engineer.
+                    </h2>
+                    <p class="text-lg text-gray-400 mb-10 max-w-xl leading-relaxed">
+                        I specialize in building high-throughput data pipelines, optimizing predictive models, and developing deep learning inference systems with C/C++, CUDA, and Python.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#projects" class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-medium transition duration-300 shadow-[0_0_20px_rgba(59,130,246,0.4)] flex items-center gap-2 group">
+                            Explore My Work <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://github.com/satyamrai0511" target="_blank" class="glass hover:bg-white/10 text-white px-8 py-4 rounded-lg font-medium transition duration-300 flex items-center gap-2 border border-white/10">
+                            <i class="fab fa-github text-xl"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Abstract Graphic / Terminal -->
+                <div class="hidden lg:block z-10 reveal" style="transition-delay: 200ms;">
+                    <div class="relative w-full max-w-lg mx-auto animate-float">
+                        <!-- Decorative background element -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-primary to-accent blur-2xl opacity-20 rounded-full"></div>
+                        
+                        <!-- Terminal Window Mockup -->
+                        <div class="glass-card rounded-xl overflow-hidden border border-white/10 shadow-2xl relative z-10">
+                            <!-- Terminal Header -->
+                            <div class="bg-black/40 px-4 py-3 border-b border-white/5 flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                <span class="ml-2 text-xs font-mono text-gray-500">satyam@gpu-cluster: ~</span>
+                            </div>
+                            <!-- Terminal Body -->
+                            <div class="p-6 font-mono text-sm leading-relaxed text-gray-300">
+                                <p class="text-green-400 mb-2">➜  ~ ./compile_jit_kernel.sh</p>
+                                <p class="text-blue-300 mb-1">Invoking CUDA C++ compiler...</p>
+                                <p class="text-gray-400 mb-1">[████████████████████] 100%</p>
+                                <p class="text-purple-300 mb-1">Optimizing inference pipelines for LLM serving...</p>
+                                <p class="mb-4 text-teal-300">Status: <span class="text-green-400 font-bold">LATENCY REDUCED BY 28%</span></p>
+                                <p class="text-gray-500 italic">"Bridging raw data and high-impact AI workloads."</p>
+                                <p class="mt-2 text-green-400 animate-pulse">_</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Education Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <span class="text-primary font-mono text-xl">01.</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">About Me</h2>
+                <div class="h-px bg-white/10 flex-grow ml-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <!-- Text Area -->
+                <div class="lg:col-span-7 space-y-6 text-gray-400 text-lg leading-relaxed reveal">
+                    <p>
+                        Hello! I'm Satyam, a Data Scientist with over 3 years of experience specializing in building and optimizing data pipelines, predictive models, and deep learning inference systems for high-volume datasets. 
+                    </p>
+                    <p>
+                        I have a deep passion for writing highly performant code. I am skilled in <span class="text-primary font-medium">Python, SQL, and C/C++</span>, and I excel at developing domain-specific compilers, anomaly detection algorithms, and GPU-accelerated workloads that drastically reduce processing latency.
+                    </p>
+                    <p>
+                        Beyond the backend engineering, I'm highly experienced in creating interactive data visualizations and dashboards. My goal is always to translate complex, low-level statistical analyses into highly observable, actionable insights for both technical and non-technical stakeholders.
+                    </p>
+                </div>
+                
+                <!-- Education & Quick Facts -->
+                <div class="lg:col-span-5 reveal" style="transition-delay: 200ms;">
+                    <div class="glass-card p-8 rounded-2xl">
+                        <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                            <i class="fas fa-graduation-cap text-accent"></i> Education
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <!-- Degree 1 -->
+                            <div class="relative pl-4 border-l-2 border-primary/30">
+                                <div class="absolute w-3 h-3 bg-primary rounded-full -left-[7px] top-1.5"></div>
+                                <h4 class="text-white font-medium">Master of Science, Data Science</h4>
+                                <p class="text-primary text-sm mb-1">University of Maryland, College Park</p>
+                                <p class="text-gray-500 text-xs font-mono">Aug 2024 - Dec 2025 | GPA: 3.7</p>
+                            </div>
+                            
+                            <!-- Degree 2 -->
+                            <div class="relative pl-4 border-l-2 border-primary/30">
+                                <div class="absolute w-3 h-3 bg-gray-600 rounded-full -left-[7px] top-1.5 border border-dark"></div>
+                                <h4 class="text-white font-medium">Bachelor of Tech, Computer Science</h4>
+                                <p class="text-gray-400 text-sm mb-1">Adamas University</p>
+                                <p class="text-gray-500 text-xs font-mono">Aug 2017 - Jul 2021 | GPA: 3.9</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mt-10 mb-6 flex items-center gap-2">
+                            <i class="fas fa-terminal text-teal-400"></i> Tech Stack
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-blue-500/30">Python / C++ / CUDA</span>
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-purple-500/30">PyTorch / TensorFlow</span>
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-yellow-500/30">Apache TVM / Triton</span>
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-teal-500/30">GCP / AWS</span>
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-gray-500/30">SQL / Dashboards</span>
+                            <span class="px-3 py-1 glass rounded-md text-sm text-gray-300 hover:text-white transition cursor-default border-pink-500/30">JAX / vLLM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 relative bg-card/20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <span class="text-primary font-mono text-xl">02.</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Where I've Worked</h2>
+                <div class="h-px bg-white/10 flex-grow ml-4"></div>
+            </div>
+            
+            <div class="pl-4 sm:pl-8 timeline-border space-y-16">
+                <!-- Job 1 -->
+                <div class="relative pl-8 sm:pl-12 reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                            <h3 class="text-2xl font-bold text-white">AI and Automation Engineer <span class="text-primary">@ Google</span></h3>
+                            <span class="text-accent text-sm font-mono bg-accent/10 px-3 py-1 rounded-full whitespace-nowrap border border-accent/20">May 2025 - Present</span>
+                        </div>
+                        <ul class="list-none space-y-3 text-gray-400">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Innovated new AI systems technologies for efficient LLM inference, using C/C++ and Python to design extensible abstractions.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Designed and optimized custom GPU kernels using CUDA C/C++ and Triton, improving throughput for complex reasoning tasks on distributed clusters.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Engineered automated evaluation pipelines leveraging PyTorch and JAX to refine safety guardrails and built efficient JIT domain-specific compilers.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 sm:pl-12 reveal">
+                    <div class="timeline-dot" style="background: #4b5563;"></div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                            <h3 class="text-2xl font-bold text-white">Data Scientist <span class="text-primary">@ MSCI</span></h3>
+                            <span class="text-gray-400 text-sm font-mono bg-white/5 px-3 py-1 rounded-full whitespace-nowrap border border-white/10">Nov 2023 - Aug 2024</span>
+                        </div>
+                        <ul class="list-none space-y-3 text-gray-400">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Engineered high-throughput inference infrastructure using Apache TVM and ONNX, optimizing financial scoring engines and reducing latency by 28%.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Conducted deep performance analysis to identify runtime bottlenecks, utilizing C/C++ and GPU kernel optimization strategies for risk valuation workloads.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Made the deep learning stack highly observable by establishing automated documentation and interactive data visualization dashboards.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 sm:pl-12 reveal">
+                    <div class="timeline-dot" style="background: #4b5563;"></div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                            <h3 class="text-2xl font-bold text-white">Data Scientist <span class="text-primary">@ Trove Research</span></h3>
+                            <span class="text-gray-400 text-sm font-mono bg-white/5 px-3 py-1 rounded-full whitespace-nowrap border border-white/10">Oct 2021 - Oct 2023</span>
+                        </div>
+                        <ul class="list-none space-y-3 text-gray-400">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Developed foundation models and built anomaly detection algorithms for market telemetry using PyTorch, TensorFlow, and CUDA C++.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Optimized deep-learning ingestion pipelines for high-frequency market data using CUDA acceleration, significantly reducing processing latency.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Implemented monitoring guardrails for LLM model drift, communicating findings to stakeholders via interactive Plotly visualizations.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Job 4 -->
+                <div class="relative pl-8 sm:pl-12 reveal">
+                    <div class="timeline-dot" style="background: #4b5563;"></div>
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl hover:-translate-y-1 transition duration-300">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
+                            <h3 class="text-2xl font-bold text-white">Data Scientist <span class="text-primary">@ SHA Infotech</span></h3>
+                            <span class="text-gray-400 text-sm font-mono bg-white/5 px-3 py-1 rounded-full whitespace-nowrap border border-white/10">Sep 2020 - Sep 2021</span>
+                        </div>
+                        <ul class="list-none space-y-3 text-gray-400">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Optimized algorithmic efficiency and redesigned database schemas using C/C++ and Python on GCP, cutting query latency by 20%.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Implemented automated scraping agents in Python to aggregate competitor data, feeding highly accurate telemetry into a machine-learning analytics platform.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-teal-500 mt-1.5 mr-3 text-sm"></i>
+                                <span>Generated SQL-based data visualizations and dashboards that supported strategic decision-making and reduced analysis turnaround time.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-4 mb-16 reveal">
+                <span class="text-primary font-mono text-xl">03.</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Some Things I've Built</h2>
+                <div class="h-px bg-white/10 flex-grow ml-4"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300">
+                    <!-- Image Placeholder / Graphic -->
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-blue-900/40 to-purple-900/40 border-b border-white/5">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-photo-video text-5xl text-white/20 group-hover:text-primary transition duration-500 group-hover:scale-110"></i>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Multimodal Video Captioning</h3>
+                            <a href="https://github.com/satyamrai0511/multimodal-video-captioning" target="_blank" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Engineered a comprehensive PyTorch evaluation system for generating descriptive video captions, establishing rigorous automated benchmarks to validate semantic alignment across complex datasets.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-accent">
+                            <span>PyTorch</span>
+                            <span>Multimodal AI</span>
+                            <span>NLP</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300" style="transition-delay: 100ms;">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-teal-900/40 to-blue-900/40 border-b border-white/5">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-wave-square text-5xl text-white/20 group-hover:text-teal-400 transition duration-500 group-hover:scale-110"></i>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Audio-Visual Event Localization</h3>
+                            <a href="https://github.com/satyamrai0511/audio-visual-event-localization" target="_blank" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Developed and scaled TensorFlow models for accurate event tagging, implementing advanced multi-modal telemetry analysis to improve localization and ranking metrics.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-teal-400">
+                            <span>TensorFlow</span>
+                            <span>Computer Vision</span>
+                            <span>Telemetry</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden group flex flex-col reveal h-full border border-white/10 hover:border-primary/50 transition-all duration-300" style="transition-delay: 200ms;">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-purple-900/40 to-pink-900/40 border-b border-white/5">
+                        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-50"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i class="fas fa-brain text-5xl text-white/20 group-hover:text-purple-400 transition duration-500 group-hover:scale-110"></i>
+                        </div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-white group-hover:text-primary transition">Contextual Video Summarization</h3>
+                            <a href="https://github.com/satyamrai0511/contextual-video-summarization" target="_blank" class="text-gray-400 hover:text-white transition">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                        </div>
+                        <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                            Designed a Transformer-based summarization agent capable of long-form content analysis, leveraging sophisticated attention mechanisms to automatically extract key semantic context.
+                        </p>
+                        <div class="flex flex-wrap gap-2 font-mono text-xs text-purple-400">
+                            <span>Transformers</span>
+                            <span>LLMs</span>
+                            <span>HuggingFace</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-center reveal">
+                <a href="https://github.com/satyamrai0511" target="_blank" class="inline-flex items-center gap-2 border border-white/10 hover:border-primary bg-white/5 hover:bg-primary/10 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                    View More Projects on GitHub <i class="fas fa-external-link-alt text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <span class="text-primary font-mono text-xl block mb-2">04. What's Next?</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Currently open to new opportunities! Whether you have a question, a potential project, or just want to discuss the latest in AI, my inbox is always open.
+                </p>
+            </div>
+            
+            <div class="glass-card p-8 md:p-12 rounded-2xl reveal border border-white/10 shadow-2xl">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                            <input type="text" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                            <input type="email" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="john@example.com">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Subject</label>
+                        <input type="text" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition" placeholder="Opportunity / Networking">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                        <textarea rows="5" class="w-full bg-dark/50 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition resize-none" placeholder="Hello Satyam..."></textarea>
+                    </div>
+                    <button type="button" class="w-full bg-primary hover:bg-blue-600 text-white font-bold py-4 rounded-lg transition duration-300 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-white/5 relative z-10 text-center">
+        <div class="flex justify-center space-x-8 mb-6">
+            <a href="mailto:satyamrai@outlook.com" class="text-gray-500 hover:text-white hover:-translate-y-1 transition-all text-2xl p-2">
+                <i class="far fa-envelope"></i>
+            </a>
+            <a href="https://linkedin.com/in/sr007" target="_blank" class="text-gray-500 hover:text-primary hover:-translate-y-1 transition-all text-2xl p-2">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/satyamrai0511" target="_blank" class="text-gray-500 hover:text-white hover:-translate-y-1 transition-all text-2xl p-2">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <p class="text-sm font-mono text-gray-600 hover:text-primary transition cursor-pointer">
+            Designed & Built by Satyam Rai
+        </p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Navbar blur effect on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+                nav.style.background = 'rgba(10, 15, 28, 0.85)';
+            } else {
+                nav.classList.remove('shadow-lg');
+                nav.style.background = 'rgba(17, 24, 39, 0.6)';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // Trigger animation for elements already in view on load
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach((el) => {
+                    const rect = el.getBoundingClientRect();
+                    if(rect.top < window.innerHeight) {
+                        el.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
